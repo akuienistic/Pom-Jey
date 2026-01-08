@@ -2,9 +2,10 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import headshot1 from "@/assets/headshot-1.jpg";
-import headshot2 from "@/assets/headshot-2.jpg";
-import heroImage from "@/assets/hero-portrait.jpg";
+import headshot1 from "@/assets/Pom 1.jpg";
+import headshot2 from "@/assets/Pom 2.jpg";
+import heroImage from "@/assets/Pom 5.jpg";
+import pomJey from "@/assets/Pom Jey.jpg";
 
 const careerHighlights = [
   { year: "2024", event: "65K+ TikTok followers milestone" },
@@ -40,9 +41,8 @@ const About = () => {
                 <span className="text-primary">Content Creator.</span>
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed opacity-0 animate-fade-up delay-200">
-                Pom Jey turns everyday moments into laugh-out-loud characters.
-                Actor, writer, and storyteller — built for short-form platforms
-                and live stages.
+                Pom Jey turns everyday moments into laugh-out-loud characters. Actor, writer, and storyteller — built
+                for short-form platforms and live stages.
               </p>
             </div>
           </div>
@@ -54,37 +54,27 @@ const About = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
               <div className="space-y-6 text-muted-foreground leading-relaxed">
                 <p>
-                  From the chaos of everyday life comes comedy gold — at least,
-                  that's how Pom Jey sees it. What started as a way to share
-                  laughs with friends quickly evolved into a full-blown creative
-                  career, with millions of views, brand partnerships, and
-                  standing ovations at live venues.
+                  From the chaos of everyday life comes comedy gold — at least, that's how Pom Jey sees it. What started
+                  as a way to share laughs with friends quickly evolved into a full-blown creative career, with millions
+                  of views, brand partnerships, and standing ovations at live venues.
                 </p>
                 <p>
-                  Pom's content is rooted in observation — the absurdity of
-                  office culture, the drama of public transport, the universal
-                  struggles of adulting. Characters are crafted with care, each
-                  one a reflection of someone we all know (or are). The result?
-                  Content that doesn't just entertain — it resonates.
+                  Pom's content is rooted in observation — the absurdity of office culture, the drama of public
+                  transport, the universal struggles of adulting. Characters are crafted with care, each one a
+                  reflection of someone we all know (or are). The result? Content that doesn't just entertain — it
+                  resonates.
                 </p>
                 <p>
-                  Beyond the screen, Pom is a seasoned live performer with
-                  experience hosting events, delivering stand-up sets, and
-                  bringing energy to any room. Whether it's a 60-second TikTok
-                  or a 60-minute stage set, the commitment to quality comedy
-                  remains the same.
+                  Beyond the screen, Pom is a seasoned live performer with experience hosting events, delivering
+                  stand-up sets, and bringing energy to any room. Whether it's a 60-second TikTok or a 60-minute stage
+                  set, the commitment to quality comedy remains the same.
                 </p>
               </div>
 
               {/* Image */}
               <div className="relative">
                 <div className="aspect-[4/5] rounded-2xl overflow-hidden">
-                  <img
-                    src={headshot1}
-                    alt="Pom Jey portrait"
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
+                  <img src={headshot1} alt="Pom Jey portrait" className="w-full h-full object-cover" loading="lazy" />
                 </div>
                 <div className="absolute -bottom-6 -left-6 w-40 h-40 bg-primary/10 rounded-2xl -z-10" />
               </div>
@@ -101,7 +91,7 @@ const About = () => {
                 <div
                   key={index}
                   className="flex items-start gap-4 p-6 bg-card rounded-xl border border-border opacity-0 animate-fade-up"
-                  style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'forwards' }}
+                  style={{ animationDelay: `${index * 100}ms`, animationFillMode: "forwards" }}
                 >
                   <span className="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold flex-shrink-0">
                     {index + 1}
@@ -122,11 +112,9 @@ const About = () => {
                 <div
                   key={index}
                   className="flex gap-6 py-4 border-b border-border last:border-b-0 opacity-0 animate-fade-up"
-                  style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'forwards' }}
+                  style={{ animationDelay: `${index * 100}ms`, animationFillMode: "forwards" }}
                 >
-                  <span className="font-poppins font-bold text-primary w-16 flex-shrink-0">
-                    {item.year}
-                  </span>
+                  <span className="font-poppins font-bold text-primary w-16 flex-shrink-0">{item.year}</span>
                   <span className="text-foreground">{item.event}</span>
                 </div>
               ))}
@@ -139,11 +127,11 @@ const About = () => {
           <div className="container">
             <h2 className="section-title mb-10">Gallery</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[heroImage, headshot1, headshot2].map((img, index) => (
+              {[heroImage, pomJey, headshot2].map((img, index) => (
                 <div
                   key={index}
                   className="aspect-[4/5] rounded-2xl overflow-hidden opacity-0 animate-scale-in"
-                  style={{ animationDelay: `${index * 150}ms`, animationFillMode: 'forwards' }}
+                  style={{ animationDelay: `${index * 150}ms`, animationFillMode: "forwards" }}
                 >
                   <img
                     src={img}
@@ -161,9 +149,7 @@ const About = () => {
         <section className="py-16 md:py-24 bg-card">
           <div className="container text-center">
             <h2 className="section-title mb-6">Let's Create Together</h2>
-            <p className="section-subtitle mx-auto mb-10">
-              Ready to bring your next project to life? Let's talk.
-            </p>
+            <p className="section-subtitle mx-auto mb-10">Ready to bring your next project to life? Let's talk.</p>
             <Button variant="hero" size="xl" asChild>
               <Link to="/contact">Work With Me</Link>
             </Button>

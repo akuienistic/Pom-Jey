@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-portrait.jpg";
+import heroImage from "@/assets/Pom 4.jpg";
 import { Sparkles } from "lucide-react";
 import { SiTiktok } from "react-icons/si";
 
@@ -12,13 +12,13 @@ export function HeroSection() {
         <img
           src={heroImage}
           alt="Pom Jey - Actor, Comedian, Content Creator"
-          className="w-full h-full object-cover object-top"
+          className="w-full h-full object-cover object-center md:object-top"
           loading="eager"
         />
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 gradient-hero" />
+        {/* Enhanced Gradient Overlay for better text clarity */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/80 to-background/70 md:from-background/90 md:via-background/70 md:to-background/60" />
         {/* Spotlight Effect */}
-        <div className="absolute inset-0 gradient-spotlight" />
+        <div className="absolute inset-0 gradient-spotlight opacity-30" />
       </div>
 
       {/* Content */}
@@ -31,14 +31,10 @@ export function HeroSection() {
           </div>
 
           {/* Title */}
-          <h1 className="hero-title opacity-0 animate-fade-up delay-100">
-            Pom Jey
-          </h1>
+          <h1 className="hero-title opacity-0 animate-fade-up delay-100">Pom Jey</h1>
 
           {/* Subtitle */}
-          <p className="hero-subtitle opacity-0 animate-fade-up delay-200">
-            Actor • Comedian • Content Creator
-          </p>
+          <p className="hero-subtitle opacity-0 animate-fade-up delay-200">Actor • Comedian • Content Creator</p>
 
           {/* Punchline */}
           <p className="hero-punchline opacity-0 animate-fade-up delay-300">
@@ -54,11 +50,7 @@ export function HeroSection() {
               </Link>
             </Button>
             <Button variant="heroOutline" size="xl" asChild>
-              <a
-                href="https://www.tiktok.com/@pomjey"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://www.tiktok.com/@pomjey" target="_blank" rel="noopener noreferrer">
                 <SiTiktok className="w-5 h-5 mr-2" />
                 Follow on TikTok
               </a>

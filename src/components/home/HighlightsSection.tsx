@@ -1,4 +1,7 @@
 import { ExternalLink, Play } from "lucide-react";
+import headshot1 from "@/assets/Pom 1.jpg";
+import headshot2 from "@/assets/Pom 2.jpg";
+import pomJey1 from "@/assets/Pom 3.jpg";
 
 const highlights = [
   {
@@ -7,6 +10,7 @@ const highlights = [
     platform: "TikTok",
     date: "2024",
     link: "https://www.tiktok.com/@pomjey",
+    image: headshot1,
   },
   {
     title: "Brand Campaign: TechStart",
@@ -14,6 +18,7 @@ const highlights = [
     platform: "TikTok",
     date: "2024",
     link: "https://www.tiktok.com/@pomjey",
+    image: headshot2,
   },
   {
     title: "The Commute Series",
@@ -21,6 +26,7 @@ const highlights = [
     platform: "TikTok",
     date: "2024",
     link: "https://www.tiktok.com/@pomjey",
+    image: pomJey1,
   },
   {
     title: "Live Comedy Night",
@@ -28,6 +34,7 @@ const highlights = [
     platform: "Live Event",
     date: "2024",
     link: "https://www.tiktok.com/@pomjey",
+    image: headshot1,
   },
   {
     title: "Holiday Campaign",
@@ -35,6 +42,7 @@ const highlights = [
     platform: "TikTok",
     date: "2023",
     link: "https://www.tiktok.com/@pomjey",
+    image: headshot2,
   },
   {
     title: "The Job Interview",
@@ -42,6 +50,7 @@ const highlights = [
     platform: "TikTok",
     date: "2023",
     link: "https://www.tiktok.com/@pomjey",
+    image: pomJey1,
   },
 ];
 
@@ -51,9 +60,7 @@ export function HighlightsSection() {
       <div className="container">
         <div className="text-center mb-14">
           <h2 className="section-title">Featured Highlights</h2>
-          <p className="section-subtitle mx-auto">
-            A selection of top-performing content and memorable moments.
-          </p>
+          <p className="section-subtitle mx-auto">A selection of top-performing content and memorable moments.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -64,12 +71,18 @@ export function HighlightsSection() {
               target="_blank"
               rel="noopener noreferrer"
               className="group bg-card rounded-2xl p-6 border border-border card-hover block opacity-0 animate-fade-up"
-              style={{ animationDelay: `${(index + 1) * 100}ms`, animationFillMode: 'forwards' }}
+              style={{ animationDelay: `${(index + 1) * 100}ms`, animationFillMode: "forwards" }}
             >
-              {/* Thumbnail placeholder */}
-              <div className="aspect-video bg-muted rounded-xl mb-5 flex items-center justify-center overflow-hidden relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20" />
-                <Play className="w-12 h-12 text-primary relative z-10 group-hover:scale-110 transition-transform" />
+              {/* Thumbnail */}
+              <div className="aspect-video bg-muted rounded-xl mb-5 overflow-hidden relative">
+                <img
+                  src={highlight.image}
+                  alt={highlight.title}
+                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
+                <Play className="w-12 h-12 text-white absolute inset-0 m-auto z-10 group-hover:scale-110 transition-transform" />
               </div>
 
               <div className="flex items-start justify-between gap-3">
@@ -77,17 +90,13 @@ export function HighlightsSection() {
                   <h3 className="font-poppins font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
                     {highlight.title}
                   </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    {highlight.description}
-                  </p>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{highlight.description}</p>
                 </div>
                 <ExternalLink className="w-4 h-4 text-muted-foreground flex-shrink-0 mt-1 group-hover:text-primary transition-colors" />
               </div>
 
               <div className="flex items-center gap-3 mt-4 text-xs">
-                <span className="px-2 py-1 bg-secondary/20 text-secondary rounded-full">
-                  {highlight.platform}
-                </span>
+                <span className="px-2 py-1 bg-secondary/20 text-secondary rounded-full">{highlight.platform}</span>
                 <span className="text-muted-foreground">{highlight.date}</span>
               </div>
             </a>

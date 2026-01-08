@@ -18,7 +18,8 @@ const buttonVariants = cva(
         // Hero button - bright spotlight yellow with glow
         hero: "bg-primary text-primary-foreground font-bold hover:scale-[1.03] active:scale-[0.98] shadow-[0_0_30px_hsl(45_100%_70%_/_0.3)] hover:shadow-[0_0_40px_hsl(45_100%_70%_/_0.5)]",
         // Hero outline variant
-        heroOutline: "border-2 border-primary/60 text-primary bg-transparent hover:bg-primary/10 hover:border-primary hover:scale-[1.03] active:scale-[0.98]",
+        heroOutline:
+          "border-2 border-primary/60 text-primary bg-transparent hover:bg-primary/10 hover:border-primary hover:scale-[1.03] active:scale-[0.98]",
         // Teal link style for social
         teal: "bg-secondary text-secondary-foreground hover:bg-secondary/80 hover:scale-[1.02]",
         // Green for WhatsApp
@@ -38,7 +39,7 @@ const buttonVariants = cva(
       variant: "default",
       size: "default",
     },
-  },
+  }
 );
 
 export interface ButtonProps
@@ -51,7 +52,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
     return <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />;
-  },
+  }
 );
 Button.displayName = "Button";
 
