@@ -93,10 +93,17 @@ export function HighlightsSection() {
                 onClick={() => openVideoModal(highlight.videoId)}
               >
                 <img
-                  src={highlight.image}
+                  src={`https://p16-sign.tiktokcdn-us.com/tos-useast5-p-0068-tx/${
+                    highlight.videoId
+                  }~tplv-tiktokx-crop:0:0.webp?x-expires=${Date.now() + 86400000}`}
                   alt={highlight.title}
                   className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
+                  onError={(e) => {
+                    // Fallback to original image if TikTok thumbnail fails
+                    const target = e.target as HTMLImageElement;
+                    target.src = highlight.image;
+                  }}
                 />
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
                 <Play className="w-12 h-12 text-white absolute inset-0 m-auto z-10 group-hover:scale-110 transition-transform" />
@@ -130,26 +137,58 @@ export function HighlightsSection() {
 
       {/* Video Modal */}
       {selectedVideo && (
-        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4" onClick={closeVideoModal}>
+        <div className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center pt-24 pb-8 px-4 animate-fade-in">
           <div
-            className="relative w-full max-w-2xl bg-background rounded-2xl overflow-hidden"
+            className="relative w-full max-w-3xl bg-background rounded-3xl overflow-hidden shadow-2xl border border-border/50 animate-scale-in max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
-            <button
-              onClick={closeVideoModal}
-              className="absolute top-4 right-4 z-10 bg-black/50 text-white rounded-full p-2 hover:bg-black/70 transition-colors"
-            >
-              <X className="w-5 h-5" />
-            </button>
-            <div className="aspect-video">
-              <iframe
-                src={`https://www.tiktok.com/embed/${selectedVideo}`}
-                className="w-full h-full"
-                frameBorder="0"
-                allow="autoplay; encrypted-media; picture-in-picture"
-                allowFullScreen
-                title="TikTok Video"
-              ></iframe>
+            {/* Header */}
+            <div className="flex items-center justify-between p-6 bg-card/50 backdrop-blur-sm border-b border-border/50">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center">
+                  <Play className="w-5 h-5 text-primary ml-0.5" />
+                </div>
+                <div>
+                  <h3 className="font-poppins font-semibold text-foreground">Now Playing</h3>
+                  <p className="text-sm text-muted-foreground">TikTok Video</p>
+                </div>
+              </div>
+              <button
+                onClick={closeVideoModal}
+                className="w-10 h-10 bg-muted hover:bg-muted/80 rounded-full flex items-center justify-center transition-colors group"
+              >
+                <X className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors" />
+              </button>
+            </div>
+
+            {/* Video Container */}
+            <div className="relative bg-black">
+              <div className="aspect-video">
+                <iframe
+                  src={`https://www.tiktok.com/embed/${selectedVideo}?autoplay=1&mute=1`}
+                  className="w-full h-full"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  title="TikTok Video"
+                  loading="lazy"
+                ></iframe>
+              </div>
+            </div>
+
+            {/* Footer */}
+            <div className="p-6 bg-card/30 backdrop-blur-sm border-t border-border/50">
+              <p className="text-sm text-muted-foreground text-center">
+                Watch more content on{" "}
+                <a
+                  href="https://www.tiktok.com/@pomjey"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:text-primary/80 font-medium transition-colors"
+                >
+                  @pomjey
+                </a>
+              </p>
             </div>
           </div>
         </div>
