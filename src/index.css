@@ -1,0 +1,238 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Pom Jey — Theatre/Comedy Talent Brand Design System */
+
+@layer base {
+  :root {
+    /* Core Palette — Theatre/Comedy Theme */
+    --backstage-charcoal: 218 38% 10%;
+    --spotlight-yellow: 45 100% 70%;
+    --punchline-coral: 0 100% 71%;
+    --cue-teal: 189 95% 43%;
+    --paper-white: 210 40% 98%;
+    --soft-gray: 220 14% 75%;
+    
+    /* Semantic Tokens */
+    --background: var(--backstage-charcoal);
+    --foreground: var(--paper-white);
+    
+    --card: 218 35% 14%;
+    --card-foreground: var(--paper-white);
+    
+    --popover: 218 35% 12%;
+    --popover-foreground: var(--paper-white);
+    
+    --primary: var(--spotlight-yellow);
+    --primary-foreground: 218 38% 10%;
+    
+    --secondary: var(--cue-teal);
+    --secondary-foreground: var(--paper-white);
+    
+    --accent: var(--punchline-coral);
+    --accent-foreground: var(--paper-white);
+    
+    --muted: 218 30% 18%;
+    --muted-foreground: var(--soft-gray);
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    
+    --border: 218 25% 22%;
+    --input: 218 25% 20%;
+    --ring: var(--spotlight-yellow);
+    
+    --radius: 0.75rem;
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(180deg, hsl(var(--backstage-charcoal) / 0) 0%, hsl(var(--backstage-charcoal) / 0.85) 70%, hsl(var(--backstage-charcoal)) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(218 35% 16%) 0%, hsl(218 35% 12%) 100%);
+    --gradient-spotlight: radial-gradient(ellipse at top, hsl(var(--spotlight-yellow) / 0.15) 0%, transparent 60%);
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 8px hsl(0 0% 0% / 0.3);
+    --shadow-md: 0 4px 20px hsl(0 0% 0% / 0.4);
+    --shadow-lg: 0 8px 40px hsl(0 0% 0% / 0.5);
+    --shadow-glow: 0 0 40px hsl(var(--spotlight-yellow) / 0.3);
+    
+    /* Sidebar (keeping defaults) */
+    --sidebar-background: var(--backstage-charcoal);
+    --sidebar-foreground: var(--paper-white);
+    --sidebar-primary: var(--spotlight-yellow);
+    --sidebar-primary-foreground: 218 38% 10%;
+    --sidebar-accent: var(--cue-teal);
+    --sidebar-accent-foreground: var(--paper-white);
+    --sidebar-border: var(--border);
+    --sidebar-ring: var(--spotlight-yellow);
+  }
+
+  .dark {
+    /* Already dark theme by default */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', system-ui, sans-serif;
+    @apply font-bold tracking-tight;
+  }
+
+  .subhead {
+    font-family: 'Montserrat', system-ui, sans-serif;
+    @apply font-semibold;
+  }
+}
+
+@layer components {
+  /* Hero Text Styles */
+  .hero-title {
+    @apply text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-none;
+    font-family: 'Poppins', system-ui, sans-serif;
+    text-shadow: 0 4px 30px hsl(var(--backstage-charcoal) / 0.8);
+  }
+
+  .hero-subtitle {
+    @apply text-lg sm:text-xl md:text-2xl tracking-wide;
+    font-family: 'Montserrat', system-ui, sans-serif;
+    @apply text-muted-foreground;
+  }
+
+  .hero-punchline {
+    @apply text-base sm:text-lg md:text-xl italic;
+    @apply text-primary;
+  }
+
+  /* Section Styles */
+  .section-title {
+    @apply text-3xl sm:text-4xl md:text-5xl font-bold mb-4;
+  }
+
+  .section-subtitle {
+    @apply text-lg sm:text-xl text-muted-foreground max-w-2xl;
+  }
+
+  /* Card Hover Effect */
+  .card-hover {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .card-hover:hover {
+    @apply -translate-y-1;
+    box-shadow: var(--shadow-md);
+  }
+
+  /* Glow Effect */
+  .glow-yellow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Stats Number */
+  .stat-number {
+    @apply text-4xl sm:text-5xl md:text-6xl font-bold;
+    font-family: 'Poppins', system-ui, sans-serif;
+    @apply text-primary;
+  }
+
+  /* Badge Pill */
+  .badge-pill {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium;
+    @apply bg-primary/10 text-primary border border-primary/20;
+  }
+
+  /* Gradient Overlays */
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .gradient-spotlight {
+    background: var(--gradient-spotlight);
+  }
+
+  /* Sticky CTA Bar */
+  .sticky-cta {
+    @apply fixed bottom-0 left-0 right-0 z-50;
+    @apply bg-card/95 backdrop-blur-md border-t border-border;
+    @apply py-3 px-4;
+  }
+}
+
+@layer utilities {
+  /* Animation Utilities */
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out forwards;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-bounce-subtle {
+    animation: bounceSubtle 2s ease-in-out infinite;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes bounceSubtle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(4px); }
+  }
+
+  /* Delay Utilities */
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+}
