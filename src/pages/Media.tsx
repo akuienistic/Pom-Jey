@@ -250,36 +250,36 @@ const Media = () => {
 
       {/* Video Modal */}
       {selectedVideo && (
-        <div className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center pt-24 pb-8 px-4 animate-fade-in">
+        <div className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in">
           <div
-            className="relative w-full max-w-3xl bg-background rounded-3xl overflow-hidden shadow-2xl border border-border/50 animate-scale-in max-h-[90vh] overflow-y-auto"
+            className="relative w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-3xl bg-background rounded-3xl overflow-hidden shadow-2xl border border-border/50 animate-scale-in"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="flex items-center justify-between p-6 bg-card/50 backdrop-blur-sm border-b border-border/50">
+            <div className="flex items-center justify-between p-4 sm:p-6 bg-card/50 backdrop-blur-sm border-b border-border/50">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center">
-                  <Play className="w-5 h-5 text-primary ml-0.5" />
+                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-primary/20 rounded-full flex items-center justify-center">
+                  <Play className="w-4 h-4 sm:w-5 sm:h-5 text-primary ml-0.5" />
                 </div>
                 <div>
-                  <h3 className="font-poppins font-semibold text-foreground">Now Playing</h3>
-                  <p className="text-sm text-muted-foreground">TikTok Video</p>
+                  <h3 className="font-poppins font-semibold text-foreground text-sm sm:text-base">Now Playing</h3>
+                  <p className="text-xs sm:text-sm text-muted-foreground">TikTok Video</p>
                 </div>
               </div>
               <button
                 onClick={closeVideoModal}
-                className="w-10 h-10 bg-muted hover:bg-muted/80 rounded-full flex items-center justify-center transition-colors group"
+                className="w-8 h-8 sm:w-10 sm:h-10 bg-muted hover:bg-muted/80 rounded-full flex items-center justify-center transition-colors group"
               >
-                <X className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors" />
+                <X className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground group-hover:text-foreground transition-colors" />
               </button>
             </div>
 
-            {/* Video Container */}
+            {/* Video Container - Responsive aspect ratio */}
             <div className="relative bg-black">
-              <div className="aspect-video">
+              <div className="w-full max-h-[60vh] sm:max-h-[70vh] lg:max-h-[80vh]">
                 <iframe
                   src={`https://www.tiktok.com/embed/${selectedVideo}?autoplay=1&mute=1`}
-                  className="w-full h-full"
+                  className="w-full h-full min-h-[300px] sm:min-h-[400px] md:min-h-[500px]"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
@@ -290,8 +290,8 @@ const Media = () => {
             </div>
 
             {/* Footer */}
-            <div className="p-6 bg-card/30 backdrop-blur-sm border-t border-border/50">
-              <p className="text-sm text-muted-foreground text-center">
+            <div className="p-4 sm:p-6 bg-card/30 backdrop-blur-sm border-t border-border/50">
+              <p className="text-xs sm:text-sm text-muted-foreground text-center">
                 Watch more content on{" "}
                 <a
                   href="https://www.tiktok.com/@pomjey"
