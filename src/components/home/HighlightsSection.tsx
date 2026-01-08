@@ -1,7 +1,8 @@
-import { ExternalLink, Play } from "lucide-react";
+import { ExternalLink, Play, X } from "lucide-react";
 import headshot1 from "@/assets/Pom 1.jpg";
 import headshot2 from "@/assets/Pom 2.jpg";
 import pomJey1 from "@/assets/Pom 3.jpg";
+import { useState } from "react";
 
 const highlights = [
   {
@@ -11,6 +12,7 @@ const highlights = [
     date: "2024",
     link: "https://www.tiktok.com/@pomjey",
     image: headshot1,
+    videoId: "7273542736123456789", // Placeholder - replace with actual TikTok video ID
   },
   {
     title: "Brand Campaign: TechStart",
@@ -19,6 +21,7 @@ const highlights = [
     date: "2024",
     link: "https://www.tiktok.com/@pomjey",
     image: headshot2,
+    videoId: "7273542736123456790", // Placeholder - replace with actual TikTok video ID
   },
   {
     title: "The Commute Series",
@@ -27,6 +30,7 @@ const highlights = [
     date: "2024",
     link: "https://www.tiktok.com/@pomjey",
     image: pomJey1,
+    videoId: "7273542736123456791", // Placeholder - replace with actual TikTok video ID
   },
   {
     title: "Live Comedy Night",
@@ -35,6 +39,7 @@ const highlights = [
     date: "2024",
     link: "https://www.tiktok.com/@pomjey",
     image: headshot1,
+    videoId: "7273542736123456792", // Placeholder - replace with actual TikTok video ID
   },
   {
     title: "Holiday Campaign",
@@ -43,6 +48,7 @@ const highlights = [
     date: "2023",
     link: "https://www.tiktok.com/@pomjey",
     image: headshot2,
+    videoId: "7273542736123456793", // Placeholder - replace with actual TikTok video ID
   },
   {
     title: "The Job Interview",
@@ -51,10 +57,21 @@ const highlights = [
     date: "2023",
     link: "https://www.tiktok.com/@pomjey",
     image: pomJey1,
+    videoId: "7273542736123456794", // Placeholder - replace with actual TikTok video ID
   },
 ];
 
 export function HighlightsSection() {
+  const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+
+  const openVideoModal = (videoId: string) => {
+    setSelectedVideo(videoId);
+  };
+
+  const closeVideoModal = () => {
+    setSelectedVideo(null);
+  };
+
   return (
     <section className="py-20 md:py-28 bg-background">
       <div className="container">
@@ -65,16 +82,16 @@ export function HighlightsSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {highlights.map((highlight, index) => (
-            <a
+            <div
               key={highlight.title}
-              href={highlight.link}
-              target="_blank"
-              rel="noopener noreferrer"
               className="group bg-card rounded-2xl p-6 border border-border card-hover block opacity-0 animate-fade-up"
               style={{ animationDelay: `${(index + 1) * 100}ms`, animationFillMode: "forwards" }}
             >
               {/* Thumbnail */}
-              <div className="aspect-video bg-muted rounded-xl mb-5 overflow-hidden relative">
+              <div
+                className="aspect-video bg-muted rounded-xl mb-5 overflow-hidden relative cursor-pointer"
+                onClick={() => openVideoModal(highlight.videoId)}
+              >
                 <img
                   src={highlight.image}
                   alt={highlight.title}
@@ -92,17 +109,51 @@ export function HighlightsSection() {
                   </h3>
                   <p className="text-muted-foreground text-sm leading-relaxed">{highlight.description}</p>
                 </div>
-                <ExternalLink className="w-4 h-4 text-muted-foreground flex-shrink-0 mt-1 group-hover:text-primary transition-colors" />
+                <a
+                  href={highlight.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-primary transition-colors flex-shrink-0 mt-1"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                </a>
               </div>
 
               <div className="flex items-center gap-3 mt-4 text-xs">
                 <span className="px-2 py-1 bg-secondary/20 text-secondary rounded-full">{highlight.platform}</span>
                 <span className="text-muted-foreground">{highlight.date}</span>
               </div>
-            </a>
+            </div>
           ))}
         </div>
       </div>
+
+      {/* Video Modal */}
+      {selectedVideo && (
+        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4" onClick={closeVideoModal}>
+          <div
+            className="relative w-full max-w-2xl bg-background rounded-2xl overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={closeVideoModal}
+              className="absolute top-4 right-4 z-10 bg-black/50 text-white rounded-full p-2 hover:bg-black/70 transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            <div className="aspect-video">
+              <iframe
+                src={`https://www.tiktok.com/embed/${selectedVideo}`}
+                className="w-full h-full"
+                frameBorder="0"
+                allow="autoplay; encrypted-media; picture-in-picture"
+                allowFullScreen
+                title="TikTok Video"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

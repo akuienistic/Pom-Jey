@@ -2,10 +2,10 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import headshot1 from "@/assets/Pom 1.jpg";
 import headshot2 from "@/assets/Pom 2.jpg";
-import heroImage from "@/assets/Pom 5.jpg";
+import heroImage from "@/assets/Pom 4.jpg";
 import pomJey from "@/assets/Pom Jey.jpg";
+import pom4 from "@/assets/Pom 4.jpg";
 
 const careerHighlights = [
   { year: "2024", event: "65K+ TikTok followers milestone" },
@@ -74,7 +74,7 @@ const About = () => {
               {/* Image */}
               <div className="relative">
                 <div className="aspect-[4/5] rounded-2xl overflow-hidden">
-                  <img src={headshot1} alt="Pom Jey portrait" className="w-full h-full object-cover" loading="lazy" />
+                  <img src={pom4} alt="Pom Jey portrait" className="w-full h-full object-cover" loading="lazy" />
                 </div>
                 <div className="absolute -bottom-6 -left-6 w-40 h-40 bg-primary/10 rounded-2xl -z-10" />
               </div>
@@ -127,7 +127,7 @@ const About = () => {
           <div className="container">
             <h2 className="section-title mb-10">Gallery</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[heroImage, pomJey, headshot2].map((img, index) => (
+              {[pomJey, heroImage, headshot2].map((img, index) => (
                 <div
                   key={index}
                   className="aspect-[4/5] rounded-2xl overflow-hidden opacity-0 animate-scale-in"

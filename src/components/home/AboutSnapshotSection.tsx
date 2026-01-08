@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import headshot from "@/assets/Pom-Jey 1.jpg";
+import headshot from "@/assets/Pom 4.jpg";
 
 export function AboutSnapshotSection() {
   return (
