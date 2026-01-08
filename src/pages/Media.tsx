@@ -2,13 +2,14 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ExternalLink, Play } from "lucide-react";
+import { ExternalLink, Play, X } from "lucide-react";
 import pom1 from "@/assets/Pom 1.jpg";
 import pom2 from "@/assets/Pom 2.jpg";
 import pom3 from "@/assets/Pom 3.jpg";
 import pom4 from "@/assets/Pom 4.jpg";
 import pom5 from "@/assets/Pom 5.jpg";
 import pomJey from "@/assets/Pom Jey.jpg";
+import { useState } from "react";
 
 const topPosts = [
   {
@@ -17,6 +18,7 @@ const topPosts = [
     metrics: "2.3M views • 180K likes",
     link: "https://www.tiktok.com/@pomjey",
     image: pom1,
+    videoId: "7575472592333720888",
   },
   {
     title: "Bus Stop Chronicles",
@@ -24,6 +26,7 @@ const topPosts = [
     metrics: "1.8M views • 120K likes",
     link: "https://www.tiktok.com/@pomjey",
     image: pom2,
+    videoId: "7568028943568162060",
   },
   {
     title: "The Interview",
@@ -31,6 +34,7 @@ const topPosts = [
     metrics: "1.5M views • 95K likes",
     link: "https://www.tiktok.com/@pomjey",
     image: pom3,
+    videoId: "7579370789837737227",
   },
   {
     title: "Tech Support Call",
@@ -38,6 +42,7 @@ const topPosts = [
     metrics: "1.2M views • 88K likes",
     link: "https://www.tiktok.com/@pomjey",
     image: pom4,
+    videoId: "7539425441992412421",
   },
   {
     title: "The Office Kitchen",
@@ -45,6 +50,7 @@ const topPosts = [
     metrics: "980K views • 72K likes",
     link: "https://www.tiktok.com/@pomjey",
     image: pom5,
+    videoId: "7532069689581686021",
   },
   {
     title: "Family Group Chat",
@@ -52,6 +58,7 @@ const topPosts = [
     metrics: "850K views • 65K likes",
     link: "https://www.tiktok.com/@pomjey",
     image: pomJey,
+    videoId: "7523566296433298694",
   },
 ];
 
@@ -85,6 +92,15 @@ const socialLinks = [
 ];
 
 const Media = () => {
+  const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+
+  const openVideoModal = (videoId: string) => {
+    setSelectedVideo(videoId);
+  };
+
+  const closeVideoModal = () => {
+    setSelectedVideo(null);
+  };
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -114,16 +130,13 @@ const Media = () => {
             <h2 className="section-title mb-10">Top Performing Content</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {topPosts.map((post, index) => (
-                <a
+                <div
                   key={post.title}
-                  href={post.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="group bg-background rounded-2xl overflow-hidden border border-border card-hover block opacity-0 animate-fade-up"
                   style={{ animationDelay: `${index * 100}ms`, animationFillMode: "forwards" }}
                 >
                   {/* Thumbnail */}
-                  <div className="aspect-video bg-muted overflow-hidden relative">
+                  <div className="aspect-video bg-muted overflow-hidden relative cursor-pointer" onClick={() => openVideoModal(post.videoId)}>
                     <img
                       src={post.image}
                       alt={post.title}
@@ -140,10 +153,17 @@ const Media = () => {
                     <p className="text-muted-foreground text-sm mb-4">{post.description}</p>
                     <div className="flex items-center justify-between">
                       <span className="text-xs text-primary font-medium">{post.metrics}</span>
-                      <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                      <a
+                        href={post.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-muted-foreground hover:text-primary transition-colors"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                      </a>
                     </div>
                   </div>
-                </a>
+                </div>
               ))}
             </div>
           </div>
@@ -217,6 +237,31 @@ const Media = () => {
           </div>
         </section>
       </main>
+
+      {/* Video Modal */}
+      {selectedVideo && (
+        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4" onClick={closeVideoModal}>
+          <div className="relative w-full max-w-2xl bg-background rounded-2xl overflow-hidden" onClick={(e) => e.stopPropagation()}>
+            <button
+              onClick={closeVideoModal}
+              className="absolute top-4 right-4 z-10 bg-black/50 text-white rounded-full p-2 hover:bg-black/70 transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            <div className="aspect-video">
+              <iframe
+                src={`https://www.tiktok.com/embed/${selectedVideo}`}
+                className="w-full h-full"
+                frameBorder="0"
+                allow="autoplay; encrypted-media; picture-in-picture"
+                allowFullScreen
+                title="TikTok Video"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      )}
+
       <Footer />
     </div>
   );

@@ -12,7 +12,7 @@ const highlights = [
     date: "2024",
     link: "https://www.tiktok.com/@pomjey",
     image: headshot1,
-    videoId: "7273542736123456789", // Placeholder - replace with actual TikTok video ID
+    videoId: "7575472592333720888",
   },
   {
     title: "Brand Campaign: TechStart",
@@ -21,7 +21,7 @@ const highlights = [
     date: "2024",
     link: "https://www.tiktok.com/@pomjey",
     image: headshot2,
-    videoId: "7273542736123456790", // Placeholder - replace with actual TikTok video ID
+    videoId: "7568028943568162060",
   },
   {
     title: "The Commute Series",
@@ -30,7 +30,7 @@ const highlights = [
     date: "2024",
     link: "https://www.tiktok.com/@pomjey",
     image: pomJey1,
-    videoId: "7273542736123456791", // Placeholder - replace with actual TikTok video ID
+    videoId: "7579370789837737227",
   },
   {
     title: "Live Comedy Night",
@@ -39,7 +39,7 @@ const highlights = [
     date: "2024",
     link: "https://www.tiktok.com/@pomjey",
     image: headshot1,
-    videoId: "7273542736123456792", // Placeholder - replace with actual TikTok video ID
+    videoId: "7539425441992412421",
   },
   {
     title: "Holiday Campaign",
@@ -48,7 +48,7 @@ const highlights = [
     date: "2023",
     link: "https://www.tiktok.com/@pomjey",
     image: headshot2,
-    videoId: "7273542736123456793", // Placeholder - replace with actual TikTok video ID
+    videoId: "7532069689581686021",
   },
   {
     title: "The Job Interview",
@@ -57,7 +57,7 @@ const highlights = [
     date: "2023",
     link: "https://www.tiktok.com/@pomjey",
     image: pomJey1,
-    videoId: "7273542736123456794", // Placeholder - replace with actual TikTok video ID
+    videoId: "7523566296433298694",
   },
 ];
 
