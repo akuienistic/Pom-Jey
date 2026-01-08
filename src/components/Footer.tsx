@@ -20,21 +20,25 @@ export function Footer() {
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
           {/* Brand */}
-          <div>
+          <div className="text-center">
             <Link
               to="/"
-              className="font-poppins font-bold text-2xl text-foreground hover:text-primary transition-colors"
+              className="font-poppins font-bold text-2xl text-foreground hover:text-primary transition-colors flex items-center justify-center gap-2"
             >
+              <svg width="24" height="24" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                <circle cx="16" cy="16" r="16" fill="hsl(45, 100%, 70%)"/>
+                <text x="16" y="22" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="hsl(218, 38%, 10%)">PJ</text>
+              </svg>
               Pom Jey
             </Link>
-            <p className="mt-3 text-muted-foreground text-sm max-w-xs">
+            <p className="mt-3 text-muted-foreground text-sm max-w-xs mx-auto">
               Turning everyday moments into sharp, shareable comedy. Available
               for brand collaborations, acting, and live appearances.
             </p>
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="text-center">
             <h4 className="font-montserrat font-semibold text-foreground mb-4">
               Quick Links
             </h4>
@@ -53,7 +57,7 @@ export function Footer() {
           </div>
 
           {/* Social */}
-          <div>
+          <div className="text-center">
             <h4 className="font-montserrat font-semibold text-foreground mb-4">
               Follow Me
             </h4>
