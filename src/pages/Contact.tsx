@@ -69,7 +69,7 @@ const Contact = () => {
           <div className="container">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
               {/* Form */}
-              <div className="opacity-0 animate-fade-up">
+              <div className="opacity-0 animate-fade-up bg-background/90 backdrop-blur-sm rounded-2xl p-8 border border-border/50">
                 {!isSubmitted ? (
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
@@ -230,7 +230,7 @@ const Contact = () => {
                     <h3 className="font-montserrat font-semibold text-foreground mb-4">
                       Quick Chat
                     </h3>
-                    <Button variant="teal" size="lg" asChild>
+                    <Button variant="green" size="lg" asChild>
                       <a
                         href="https://wa.me/1234567890"
                         target="_blank"

@@ -20,7 +20,7 @@ const services = [
 
 export function WhatIDoSection() {
   return (
-    <section className="py-20 md:py-28 bg-background">
+    <section className="py-20 md:py-15 bg-background">
       <div className="container">
         <div className="text-center mb-14">
           <h2 className="section-title">What I Do</h2>

@@ -21,6 +21,8 @@ const buttonVariants = cva(
         heroOutline: "border-2 border-primary/60 text-primary bg-transparent hover:bg-primary/10 hover:border-primary hover:scale-[1.03] active:scale-[0.98]",
         // Teal link style for social
         teal: "bg-secondary text-secondary-foreground hover:bg-secondary/80 hover:scale-[1.02]",
+        // Green for WhatsApp
+        green: "bg-green-500 text-white hover:bg-green-600 hover:scale-[1.02]",
         // Coral accent for micro-interactions
         accent: "bg-accent text-accent-foreground hover:bg-accent/90 hover:scale-[1.02]",
       },
